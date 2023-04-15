@@ -81,7 +81,9 @@ public class ListUserLoggedResource {
 			
 			while (results.hasNext()) {
 				Entity entity = results.next();
-				if(entity.getString("user_logged").equals(TRUE)) {
+				if(entity.getString("user_logged").equals(TRUE) && !entity.getString("user_role").equals("GA") &&
+				  !entity.getString("user_role").equals("GBO")&& !entity.getString("user_role").equals("GS") &&
+				  !entity.getString("user_role").equals("SU")) {
 					String entityID = entity.getKey().getName();
 					String entityRole = entity.getString("user_role");		
 					String info = "Info: " + entityID + " | " + entityRole;
